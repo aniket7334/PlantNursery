@@ -18,7 +18,7 @@ import BookingPage from "./Components/BookingPage";
 import Login from "./Components/Login";
 import CartPage from "./Components/CartPage";
 import GardenAccessoriesPage from "./Components/GardenAccessoriesPage";
-import CheckoutPage from "./Components/CheckOutPage";
+import CheckoutPage from "./Components/CheckoutPage";
 import SearchResults from "./Components/SearchResults";
 import AdminLogin from "./Admin/AdminLogin";
 import AdminDashboard from "./Admin/AdminDashboard";
