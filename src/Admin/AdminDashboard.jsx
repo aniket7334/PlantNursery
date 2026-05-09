@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AdminSidebar from "./AdminSidebar";
+import { apiUrl } from "../config/api";
 import {
   FaShoppingBag,
   FaRupeeSign,
@@ -30,9 +31,7 @@ const AdminDashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/orders/stats/summary"
-      );
+      const response = await fetch(apiUrl("/api/orders/stats/summary"));
       const data = await response.json();
       if (data.success) setStats(data.stats);
     } catch (error) {
@@ -42,7 +41,7 @@ const AdminDashboard = () => {
 
   const fetchRecentOrders = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/orders");
+      const response = await fetch(apiUrl("/api/orders"));
       const data = await response.json();
       if (data.success) setRecentOrders(data.orders.slice(0, 5));
     } catch (error) {

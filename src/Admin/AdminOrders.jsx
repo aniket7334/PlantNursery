@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AdminSidebar from "./AdminSidebar";
+import { apiUrl } from "../config/api";
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -13,7 +14,7 @@ const AdminOrders = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/orders");
+      const response = await fetch(apiUrl("/api/orders"));
       const data = await response.json();
       if (data.success) setOrders(data.orders);
     } catch (error) {
@@ -26,7 +27,7 @@ const AdminOrders = () => {
   const updateOrderStatus = async (orderId, orderStatus) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/orders/${orderId}/status`,
+        apiUrl(`/api/orders/${orderId}/status`),
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

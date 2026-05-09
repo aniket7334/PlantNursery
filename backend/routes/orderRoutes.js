@@ -23,32 +23,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET - Single order
-router.get("/:id", async (req, res) => {
-  try {
-    const order = await Order.findById(req.params.id);
-    if (!order) return res.status(404).json({ message: "Order not found" });
-    res.json({ success: true, order });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-});
-
-// PUT - Update order status
-router.put("/:id/status", async (req, res) => {
-  try {
-    const { orderStatus, paymentStatus } = req.body;
-    const order = await Order.findByIdAndUpdate(
-      req.params.id,
-      { orderStatus, paymentStatus },
-      { new: true }
-    );
-    res.json({ success: true, order });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-});
-
 // GET - Order stats for dashboard
 router.get("/stats/summary", async (req, res) => {
   try {
@@ -74,6 +48,32 @@ router.get("/stats/summary", async (req, res) => {
         todayOrders,
       },
     });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// GET - Single order
+router.get("/:id", async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id);
+    if (!order) return res.status(404).json({ message: "Order not found" });
+    res.json({ success: true, order });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// PUT - Update order status
+router.put("/:id/status", async (req, res) => {
+  try {
+    const { orderStatus, paymentStatus } = req.body;
+    const order = await Order.findByIdAndUpdate(
+      req.params.id,
+      { orderStatus, paymentStatus },
+      { new: true }
+    );
+    res.json({ success: true, order });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

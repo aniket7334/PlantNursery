@@ -20,6 +20,7 @@ import CartPage from "./Components/CartPage";
 import GardenAccessoriesPage from "./Components/GardenAccessoriesPage";
 import CheckoutPage from "./Components/CheckoutPage";
 import SearchResults from "./Components/SearchResults";
+
 import AdminLogin from "./Admin/AdminLogin";
 import AdminDashboard from "./Admin/AdminDashboard";
 import AdminOrders from "./Admin/AdminOrders";
@@ -58,6 +59,7 @@ const AppContent = () => {
 
       <Routes>
         {/* ✅ User Routes */}
+        
         <Route path="/login" element={<Login />} />
         <Route
           path="/"

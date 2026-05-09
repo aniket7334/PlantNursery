@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../config/api";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
@@ -140,7 +141,7 @@ const CheckoutPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/orders", {
+      const response = await fetch(apiUrl("/api/orders"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData),
@@ -156,7 +157,7 @@ const CheckoutPage = () => {
       }
     } catch (error) {
       console.error("Order error:", error);
-      alert("Server error! Make sure backend is running on port 5000.");
+      alert("Server error! Please check the backend API URL.");
     } finally {
       setLoading(false);
     }
